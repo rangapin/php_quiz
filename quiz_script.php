@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         echo "Your Score: $score out of " . count($phpQuiz);
         echo "<br>";
-        echo "<a href='index.php'>Back to Home</a>";
+        echo "<a href='index.php' class='text-blue-500'>Back to Home</a>";
 
         // Unset session variables and end the script
         unset($_SESSION['current_index']);
@@ -49,29 +49,33 @@ $options = $phpQuiz[$currentQuestion];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHP Quiz</title>
+    <link rel="stylesheet" href="public/css/styles.css">
 </head>
-<body>
+<body class="bg-gray-200">
 
-    <h1>PHP Quiz</h1>
+    <div class="container mx-auto p-4">
+        <h1 class="text-3xl font-bold mb-4">PHP Quiz</h1>
 
-    <form method="post" action="">
-        <h2><?= $currentQuestion ?></h2>
-        
-        <?php foreach ($options as $option => $value): ?>
-            <label>
-                <input type="radio" name="user_answer" value="<?= $option ?>" required>
-                <?= $value ?>
-            </label><br>
-        <?php endforeach; ?>
+        <form method="post" action="" class="bg-white p-4 rounded shadow">
+            <h2 class="text-xl font-semibold mb-2"><?= $currentQuestion ?></h2>
 
-        <button type="submit">Next Question</button>
-    </form>
+            <?php foreach ($options as $option => $value): ?>
+                <label class="block mb-2">
+                    <input type="radio" name="user_answer" value="<?= $option ?>" required class="mr-2">
+                    <?= $value ?>
+                </label>
+            <?php endforeach; ?>
 
-    <br>
-    <a href="index.php">Back to Home</a>
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded mt-4">Next Question</button>
+        </form>
+
+        <br>
+        <a href="index.php" class="text-blue-500">Back to Home</a>
+    </div>
 
 </body>
 </html>
+
 
 
 
